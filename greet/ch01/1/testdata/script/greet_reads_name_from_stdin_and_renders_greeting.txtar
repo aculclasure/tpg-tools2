@@ -1,0 +1,6 @@
+stdin input.txt
+exec greet
+stdout '^Hello Andrew!\n$'
+
+-- input.txt --
+Andrew
