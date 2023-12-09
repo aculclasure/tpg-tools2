@@ -1,0 +1,7 @@
+exec lines input.txt
+stdout '^3\n$'
+
+-- input.txt --
+line 1
+line 2
+line 3

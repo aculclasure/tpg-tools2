@@ -1,0 +1,12 @@
+exec lines three_lines.txt four_lines.txt
+stdout '^7\n$'
+
+-- three_lines.txt --
+line 1
+line 2
+line 3
+-- four_lines.txt --
+1
+2
+3
+4

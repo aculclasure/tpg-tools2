@@ -1,0 +1,7 @@
+stdin input.txt
+exec words
+stdout '^4\n$'
+
+-- input.txt --
+1 word
+4 words

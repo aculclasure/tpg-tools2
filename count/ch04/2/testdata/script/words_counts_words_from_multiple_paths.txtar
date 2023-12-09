@@ -1,0 +1,8 @@
+exec words four_words.txt two_words.txt
+stdout '^6\n$'
+
+-- four_words.txt --
+one word
+four words
+-- two_words.txt --
+six words
