@@ -78,3 +78,21 @@ func TestWithInputFromArgs_SetsInputToPath(t *testing.T) {
 		t.Errorf("want %d, got %d", want, got)
 	}
 }
+
+func TestCountLines_WithMultiplePathsReturnsTotalNumberOfLines(t *testing.T) {
+	t.Parallel()
+	counter, err := count.NewCounter(
+		count.WithInputFromArgs([]string{
+			"testdata/three_lines.txt",
+			"testdata/four_lines.txt",
+		}),
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := 7
+	got := counter.CountLines()
+	if want != got {
+		t.Errorf("want %d, got %d", want, got)
+	}
+}
