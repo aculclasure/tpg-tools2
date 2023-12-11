@@ -1,0 +1,2 @@
+! exec count -bytes -lines
+stderr 'cannot both be specified at the same time'

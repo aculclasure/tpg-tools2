@@ -1,0 +1,6 @@
+stdin four_bytes.txt
+exec count -bytes four_bytes.txt
+stdout '^5\n$'
+
+-- four_bytes.txt --
+abcd
