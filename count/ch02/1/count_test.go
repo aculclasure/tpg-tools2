@@ -2,6 +2,7 @@ package count_test
 
 import (
 	"bytes"
+	"os"
 	"testing"
 
 	"github.com/aculclasure/count"
@@ -9,9 +10,9 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	testscript.RunMain(m, map[string]func() int{
+	os.Exit(testscript.RunMain(m, map[string]func() int{
 		"countlines": count.Main,
-	})
+	}))
 }
 
 func Test(t *testing.T) {
