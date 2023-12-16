@@ -5,7 +5,21 @@ import (
 	"time"
 
 	"github.com/aculclasure/howlong"
+	"github.com/rogpeppe/go-internal/testscript"
 )
+
+func TestMain(m *testing.M) {
+	testscript.RunMain(m, map[string]func() int{
+		"howlong": howlong.Main,
+	})
+}
+
+func Test(t *testing.T) {
+	t.Parallel()
+	testscript.Run(t, testscript.Params{
+		Dir: "testdata/script",
+	})
+}
 
 func TestRunReportsCorrectElapsedTimeForCommand(t *testing.T) {
 	t.Parallel()

@@ -1,0 +1,5 @@
+exec howlong
+stdout 'Usage'
+
+[!windows] exec howlong sleep 0.1
+stdout 'time:'
