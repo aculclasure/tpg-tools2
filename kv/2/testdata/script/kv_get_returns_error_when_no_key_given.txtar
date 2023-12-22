@@ -1,0 +1,3 @@
+! exec kv get
+
+stderr 'Usage: kv'
