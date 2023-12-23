@@ -5,6 +5,8 @@ import (
 	"io"
 	"net/http"
 	"os"
+
+	"github.com/aculclasure/weather"
 )
 
 const BaseURL = `https://api.openweathermap.org`
@@ -25,5 +27,15 @@ func main() {
 		fmt.Fprintln(os.Stderr, "unexpected response status: ", resp.StatusCode)
 		os.Exit(1)
 	}
-	io.Copy(os.Stdout, resp.Body)
+	data, err := io.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	cond, err := weather.ParseData(data)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	fmt.Println(cond)
 }
