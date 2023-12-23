@@ -11,6 +11,8 @@ import (
 )
 
 type Conditions struct {
+	City        string
+	CountryCode string
 	Summary     string
 	Temperature Temperature
 }
@@ -28,6 +30,10 @@ type OWMResponse struct {
 	Main struct {
 		Temp float64
 	}
+	Sys struct {
+		Country string
+	}
+	Name string
 }
 
 func ParseData(data []byte) (Conditions, error) {
@@ -42,6 +48,8 @@ func ParseData(data []byte) (Conditions, error) {
 			"got error '%s' trying to parse openweather response: %s, want at least one weather element", err, string(data))
 	}
 	return Conditions{
+		City:        resp.Name,
+		CountryCode: resp.Sys.Country,
 		Summary:     resp.Weather[0].Main,
 		Temperature: Temperature(resp.Main.Temp),
 	}, nil
@@ -118,6 +126,10 @@ func Main() int {
 		return 1
 	}
 	//fmt.Println(conditions)
-	fmt.Printf("%s %.1f\n", conditions.Summary, conditions.Temperature.Celsius())
+	fmt.Printf("%s, %s: %s %.1f\n",
+		conditions.City,
+		conditions.CountryCode,
+		conditions.Summary,
+		conditions.Temperature.Celsius())
 	return 0
 }

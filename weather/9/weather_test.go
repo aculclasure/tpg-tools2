@@ -17,6 +17,8 @@ func TestParseData_CorrectlyParsesJSONData(t *testing.T) {
 		t.Fatal(err)
 	}
 	want := weather.Conditions{
+		City:        "London",
+		CountryCode: "GB",
 		Summary:     "Clouds",
 		Temperature: 283.38,
 	}
@@ -69,6 +71,8 @@ func TestGetWeather_ReturnsExpectedConditions(t *testing.T) {
 	c.BaseURL = ts.URL
 	c.HTTPClient = ts.Client()
 	want := weather.Conditions{
+		City:        "London",
+		CountryCode: "GB",
 		Summary:     "Clouds",
 		Temperature: 283.38,
 	}
